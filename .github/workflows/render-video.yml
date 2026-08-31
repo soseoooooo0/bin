@@ -11,22 +11,12 @@ jobs:
     name: Render MP4
     runs-on: ubuntu-latest
     timeout-minutes: 10
-
     steps:
-      - name: Check out project
-        uses: actions/checkout@v4
-
-      - name: Verify source images
-        run: |
-          test -f assets/background.png
-          test -f assets/lotus.png
-          test -f assets/child.png
-
+      - uses: actions/checkout@v4
       - name: Render video
         run: |
           chmod +x scripts/render.sh
           scripts/render.sh
-
       - name: Upload MP4
         uses: actions/upload-artifact@v4
         with:
